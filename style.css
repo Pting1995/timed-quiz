@@ -1,8 +1,13 @@
+
 .card {
-    margin: 10%;
+    margin: 5%;
 }
+
+.time-left {
+    text-align: end;
+}
+
 .card-body {
     text-align: center;
     margin: 10%;
-
 }
