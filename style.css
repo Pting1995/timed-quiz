@@ -3,11 +3,20 @@
     margin: 5%;
 }
 
-.time-left {
+.col-md-2 {
+    text-align: center;
+}
+
+#time-left {
     text-align: end;
 }
 
-.card-body {
+#card-body {
     text-align: center;
     margin: 10%;
+}
+
+button {
+    margin: 10px;
+    border-color: aqua;
 }
