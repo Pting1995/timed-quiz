@@ -9,13 +9,16 @@
 
 var timerEl = document.getElementById("time-left");
 
-var cardBody = document.getElementById("card-body");
+var questionArea = document.getElementById("question-area");
 
 var h1El = document.getElementById("quiz-text");
 
 var descEl = document.getElementById("description");
 
 var startBtn = document.getElementById("start");
+
+var hrEl = document.getElementById("feedback-line")
+var feedbackText = document.getElementById("feedback-text")
 
 var answer1 = document.createElement("button");
 var answer2 = document.createElement("button");
@@ -25,9 +28,9 @@ var answer4 = document.createElement("button");
 var timeLeft = 100
 
 startBtn.addEventListener("click", function() {
-    
+
     secLeft();
-    
+
     questionOne();
 })
 
@@ -48,46 +51,108 @@ function secLeft() {
     }, 1000)
 }
 
+function minusTime() {
+    timeLeft = timeLeft - 10;
+    var line = document.createElement("hr");
+}
+
 function gameOver() {
     h1El.textContent = "u lose"
 }
 
+function posFeedback() {
+    hrEl.hidden = false
+    feedbackText.textContent = "Correct!"
+    feedbackText.hidden = false
+}
+
+function negFeedback() {
+    hrEl.hidden = false
+    feedbackText.hidden = false
+}
+
 function questionOne() {
-    h1El.textContent = "Whale Whale Whale"
+    h1El.textContent = "Whales live in the"
     // hides test description and start button
     descEl.textContent = ""
     startBtn.style.display = "none"
 
-    answer1.innerHTML = "Mammal"
-    cardBody.appendChild(answer1)
-    answer2.innerHTML = "Bird"
-    cardBody.appendChild(answer2)
-    answer3.innerHTML = "Fish"
-    cardBody.appendChild(answer3)
-    answer4.innerHTML = "Whale"
-    cardBody.appendChild(answer4) 
+    answer1.innerHTML = "Ocean"
+    questionArea.appendChild(answer1)
+    answer2.innerHTML = "Ground"
+    questionArea.appendChild(answer2)
+    answer3.innerHTML = "Sky"
+    questionArea.appendChild(answer3)
+    answer4.innerHTML = "Vacuum of space"
+    questionArea.appendChild(answer4) 
 
     answer1.addEventListener("click", function() {
         questionTwo()
+        posFeedback()
     })
+
     answer2.addEventListener("click", function() {
-        wrongAnswer()
+        minusTime()
         questionTwo()
+        negFeedback()
     })
+
     answer3.addEventListener("click", function() {
-        wrongAnswer()
+        minusTime()
         questionTwo()
+        negFeedback()
     })
+
     answer4.addEventListener("click", function() {
-        wrongAnswer()
+        minusTime()
         questionTwo()
+        negFeedback()
     })
 }
 
-function wrongAnswer() {
-    timeLeft = timeLeft - 10
+function questionTwo() {
+    h1El.textContent = "What do emperor penguins eat?"
+    // hides test description and start button
+    descEl.textContent = ""
+    startBtn.style.display = "none"
+
+    answer1.innerHTML = "Seaweed"
+    questionArea.appendChild(answer1)
+    answer2.innerHTML = "Ice"
+    questionArea.appendChild(answer2)
+    answer3.innerHTML = "Krill"
+    questionArea.appendChild(answer3)
+    answer4.innerHTML = "Whales"
+    questionArea.appendChild(answer4) 
+
+    answer1.addEventListener("click", function() {
+        minusTime()
+        questionThree()
+        negFeedback()
+    })
+
+    answer2.addEventListener("click", function() {
+        minusTime()
+        questionThree()
+        negFeedback()
+    })
+
+    answer3.addEventListener("click", function() {
+        questionThree()
+        posFeedback()
+    })
+
+    answer4.addEventListener("click", function() {
+        minusTime()
+        questionThree()
+        negFeedback()
+    })
 }
 
+
+// create a invis div in html, change content on neg feedback and display after first question and update after
+
+    
 // when start button is pressed
     // change h1 tag to question 1
     // hide article and start button
