@@ -11,43 +11,81 @@ var timerEl = document.getElementById("time-left");
 
 var cardBody = document.getElementById("card-body");
 
-var h1 = document.getElementById("quiz-text");
+var h1El = document.getElementById("quiz-text");
 
-var desc = document.getElementById("description");
+var descEl = document.getElementById("description");
 
 var startBtn = document.getElementById("start");
 
-var button = document.createElement("button");
-button.innerHTML = "Do Something";
+var answer1 = document.createElement("button");
+var answer2 = document.createElement("button");
+var answer3 = document.createElement("button");
+var answer4 = document.createElement("button");
+
+var timeLeft = 100
 
 startBtn.addEventListener("click", function() {
     
     secLeft();
+    
     questionOne();
 })
 
 function secLeft() {
-    var timeLeft = 5;
+    
     setInterval(function() {
-        timerEl.textContent = timeLeft + " seconds left";
         timeLeft--;
-
-        if (timeLeft === 0) {
+        if (timeLeft > 0) {
+            timerEl.textContent = timeLeft + " seconds left";
+            
+        }
+        else {
             timerEl.textContent = "";
             clearInterval(secLeft);
             gameOver();
         }
+        
     }, 1000)
 }
 
 function gameOver() {
-    h1.textContent = "u lose"
+    h1El.textContent = "u lose"
 }
 
 function questionOne() {
-    h1.textContent = "Question One"
+    h1El.textContent = "Whale Whale Whale"
+    // hides test description and start button
+    descEl.textContent = ""
+    startBtn.style.display = "none"
 
-    cardBody.appendChild(button)
+    answer1.innerHTML = "Mammal"
+    cardBody.appendChild(answer1)
+    answer2.innerHTML = "Bird"
+    cardBody.appendChild(answer2)
+    answer3.innerHTML = "Fish"
+    cardBody.appendChild(answer3)
+    answer4.innerHTML = "Whale"
+    cardBody.appendChild(answer4) 
+
+    answer1.addEventListener("click", function() {
+        questionTwo()
+    })
+    answer2.addEventListener("click", function() {
+        wrongAnswer()
+        questionTwo()
+    })
+    answer3.addEventListener("click", function() {
+        wrongAnswer()
+        questionTwo()
+    })
+    answer4.addEventListener("click", function() {
+        wrongAnswer()
+        questionTwo()
+    })
+}
+
+function wrongAnswer() {
+    timeLeft = timeLeft - 10
 }
 
 // when start button is pressed
