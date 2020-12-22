@@ -59,7 +59,13 @@ function minusTime() {
 
 // shows game over screen if user run out of time
 function gameOver() {
-    h1El.textContent = "u lose"
+    h1El.textContent = "You lose!"
+    descEl.textContent = "Your final score is: 0"
+    timerEl.hidden = true
+    answer1.hidden = true
+    answer2.hidden = true
+    answer3.hidden = true
+    answer4.hidden = true
 }
 
 // shows feedback if question is answered correctly
@@ -155,36 +161,48 @@ function questionThree() {
 
     answer1.innerHTML = "Omnivore"
     questionArea.appendChild(answer1)
-    answer2.innerHTML = "Carnivore"
+    answer2.innerHTML = "Herbivore"
     questionArea.appendChild(answer2)
-    answer3.innerHTML = "Herbivore"
+    answer3.innerHTML = "Carnivore"
     questionArea.appendChild(answer3)
     answer4.innerHTML = "Cannibal"
     questionArea.appendChild(answer4) 
 
     answer1.addEventListener("click", function() {
         minusTime()
-        highScore()
+        summary()
         negFeedback()
     })
 
     answer2.addEventListener("click", function() {
-        minusTime()
-        highScore()
-        negFeedback()
+        posFeedback()
+        summary()
     })
 
     answer3.addEventListener("click", function() {
-        highScore()
-        posFeedback()
+        minusTime()
+        summary()
+        negFeedback()
     })
 
     answer4.addEventListener("click", function() {
         minusTime()
-        highScore()
+        summary()
         negFeedback()
     })
 }
+
+function summary() {
+    h1El.textContent = "All questions answered!"
+    descEl.textContent = "Your final score is: " + timeLeft
+    timerEl.hidden = true
+    answer1.hidden = true
+    answer2.hidden = true
+    answer3.hidden = true
+    answer4.hidden = true
+}
+
+// button keeps listening the entire time, solutions: create new buttons hide old ones, somehow make it listen to scope add 10 sec to counteract -10
 
 // if Highscores button is pressed, or if question 3 is answered then show highscores
 
