@@ -96,28 +96,24 @@ function questionOne() {
     answer4.innerHTML = "Vacuum of space"
     questionArea.appendChild(answer4) 
 
-    answer1.addEventListener("click", function() {
-        questionTwo()
-        posFeedback()
-    })
+    answer1.addEventListener("click", posFeedback)
+    answer1.addEventListener("click", questionTwo)
 
-    answer2.addEventListener("click", function() {
-        minusTime()
-        questionTwo()
-        negFeedback()
-    })
+    answer2.addEventListener("click", minusTime)
+    answer2.addEventListener("click", negFeedback)
+    answer2.addEventListener("click", questionTwo)
+    answer2.removeEventListener("click", minusTime)
 
-    answer3.addEventListener("click", function() {
-        minusTime()
-        questionTwo()
-        negFeedback()
-    })
 
-    answer4.addEventListener("click", function() {
-        minusTime()
-        questionTwo()
-        negFeedback()
-    })
+    answer3.addEventListener("click", minusTime)
+    answer3.addEventListener("click", negFeedback)
+    answer3.addEventListener("click", questionTwo)
+    answer3.removeEventListener("click", minusTime)
+
+    answer4.addEventListener("click", minusTime)
+    answer4.addEventListener("click", negFeedback)
+    answer4.addEventListener("click", questionTwo)
+    answer4.removeEventListener("click", minusTime)
 }
 
 function questionTwo() {
@@ -132,28 +128,23 @@ function questionTwo() {
     answer4.innerHTML = "Whales"
     questionArea.appendChild(answer4) 
 
-    answer1.addEventListener("click", function() {
-        minusTime()
-        questionThree()
-        negFeedback()
-    })
+    answer1.addEventListener("click", minusTime)
+    answer1.addEventListener("click", negFeedback)
+    answer1.addEventListener("click", questionThree)
+    answer1.removeEventListener("click", minusTime)
 
-    answer2.addEventListener("click", function() {
-        minusTime()
-        questionThree()
-        negFeedback()
-    })
+    answer2.addEventListener("click", minusTime)
+    answer2.addEventListener("click", negFeedback)
+    answer2.addEventListener("click", questionThree)
+    answer2.removeEventListener("click", minusTime)
 
-    answer3.addEventListener("click", function() {
-        questionThree()
-        posFeedback()
-    })
+    answer3.addEventListener("click", posFeedback)
+    answer3.addEventListener("click", questionThree)
 
-    answer4.addEventListener("click", function() {
-        minusTime()
-        questionThree()
-        negFeedback()
-    })
+    answer4.addEventListener("click", minusTime)
+    answer4.addEventListener("click", negFeedback)
+    answer4.addEventListener("click", questionThree)
+    answer4.removeEventListener("click", minusTime)
 }
 
 function questionThree() {
@@ -168,28 +159,23 @@ function questionThree() {
     answer4.innerHTML = "Cannibal"
     questionArea.appendChild(answer4) 
 
-    answer1.addEventListener("click", function() {
-        minusTime()
-        summary()
-        negFeedback()
-    })
+    answer1.addEventListener("click", minusTime)
+    answer1.addEventListener("click", negFeedback)
+    answer1.addEventListener("click", summary)
+    answer1.removeEventListener("click", minusTime)
 
-    answer2.addEventListener("click", function() {
-        posFeedback()
-        summary()
-    })
+    answer2.addEventListener("click", posFeedback)
+    answer2.addEventListener("click", summary)
 
-    answer3.addEventListener("click", function() {
-        minusTime()
-        summary()
-        negFeedback()
-    })
+    answer3.addEventListener("click", minusTime)
+    answer3.addEventListener("click", negFeedback)
+    answer3.addEventListener("click", summary)
+    answer3.removeEventListener("click", minusTime)
 
-    answer4.addEventListener("click", function() {
-        minusTime()
-        summary()
-        negFeedback()
-    })
+    answer4.addEventListener("click", minusTime)
+    answer4.addEventListener("click", negFeedback)
+    answer4.addEventListener("click", summary)
+    answer4.removeEventListener("click", minusTime)
 }
 
 function summary() {
