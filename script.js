@@ -25,7 +25,7 @@ var answer3 = document.createElement("button");
 var answer4 = document.createElement("button");
 
 var timeLeft = 100
-
+var time
 startBtn.addEventListener("click", function() {
 
     secLeft();
@@ -35,7 +35,8 @@ startBtn.addEventListener("click", function() {
 
 function secLeft() {
     
-    setInterval(function() {
+    
+    time = setInterval(function() {
         timeLeft--;
         if (timeLeft > 0) {
             timerEl.textContent = timeLeft + " seconds left";
@@ -43,7 +44,7 @@ function secLeft() {
         }
         else {
             timerEl.textContent = "";
-            clearInterval(secLeft());
+            clearInterval(time);
             gameOver();
         }
         
@@ -178,7 +179,7 @@ function questionThree() {
 // var highscoreScores = []
 
 function summary() {
-    clearInterval(secLeft())
+    clearInterval(time)
 
     h1El.textContent = "All questions answered!"
     descEl.textContent = "Your final score is: " + timeLeft
@@ -200,7 +201,9 @@ function summary() {
 
 function highScores() {
     h1El.textContent = "Highscores!";
-    highscoreList.hidden = false
+    highscoreList.hidden = false;
+    feedbackText.hidden = true;
+    hrEl.hidden = true;
     for (i = 0; i < localStorage.length; i++){
         var key = window.localStorage.key(i);
         var value = window.localStorage.getItem(localStorage.key(i));
