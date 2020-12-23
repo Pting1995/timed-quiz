@@ -17,7 +17,7 @@
             <section class="card">
                 <section class="row">
                     <aside class="col-md-1">
-                        <a href="#">Highscores</a>
+                        <button type="button" class="highscore-button btn btn-info">Highscores</button>
                     </aside>
                     <aside class="col-md-10">
                         <!-- empty on purpose -->
@@ -30,7 +30,12 @@
                     <article id="question-area">
                         <h1 id="quiz-text">Quiz Time!</h1>
                         <article id="description">This quiz is based on animals!</article>
-                        <button id="start">Start</button>
+                        <button type="button" class="btn btn-info" id="start-button">Start</button>
+                        <form id="initials-form" hidden>
+                            <div class="form-group mx-sm-3 mb-2">
+                              <input type="initials" class="form-control" id="initials" placeholder="Enter initials">
+                            </div>
+                          </form>
                     </article>
                         <hr id="feedback-line" hidden>
                         <p id="feedback-text" hidden>Incorrect! You lose 10 seconds!</p>
