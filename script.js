@@ -10,7 +10,7 @@ var startBtn = document.getElementById("start-button")
 
 var initialsForm = document.getElementById("initials-form")
 
-var highscoreBtn = document.getElementsByClassName("highscore-button")
+var highscoreBtn = document.getElementById("highscore-button")
 
 var highscoreList = document.getElementById("highscores-list")
 
@@ -86,6 +86,11 @@ function removeMinusTime() {
     answer3.removeEventListener("click", minusTime);
     answer4.removeEventListener("click", minusTime);
 }
+
+highscoreBtn.addEventListener("click", function() {
+    highScores();
+})
+
 
 function questionOne() {
     h1El.textContent = "Whales live in the";
@@ -201,6 +206,8 @@ function summary() {
 
 function highScores() {
     h1El.textContent = "Highscores!";
+    startBtn.hidden = true;
+    descEl.hidden = true;
     highscoreList.hidden = false;
     feedbackText.hidden = true;
     hrEl.hidden = true;
