@@ -12,7 +12,9 @@ var initialsForm = document.getElementById("initials-form")
 
 var highscoreBtn = document.getElementsByClassName("highscore-button")
 
-var highscoreList = document.getElementById("highScores-list")
+var highscoreList = document.getElementById("highscores-list")
+
+var initials = document.getElementById("initials")
 
 var hrEl = document.getElementById("feedback-line");
 var feedbackText = document.getElementById("feedback-text");
@@ -41,7 +43,7 @@ function secLeft() {
         }
         else {
             timerEl.textContent = "";
-            clearInterval(secLeft);
+            clearInterval(secLeft());
             gameOver();
         }
         
@@ -105,7 +107,6 @@ function questionOne() {
     answer2.addEventListener("click", minusTime);
     answer2.addEventListener("click", negFeedback);
     answer2.addEventListener("click", questionTwo);
-
 
     answer3.addEventListener("click", minusTime);
     answer3.addEventListener("click", negFeedback);
@@ -174,10 +175,10 @@ function questionThree() {
     answer4.addEventListener("click", summary);
 }
 
-function summary() {
+// var highscoreScores = []
 
-    var allUsers = []
-    
+function summary() {
+    clearInterval(secLeft())
 
     h1El.textContent = "All questions answered!"
     descEl.textContent = "Your final score is: " + timeLeft
@@ -187,15 +188,24 @@ function summary() {
     answer3.hidden = true;
     answer4.hidden = true;
     initialsForm.hidden = false
-    initialsForm.addEventListener("submit", function() {
-        event.preventDefault()
-        // store user initials in local storage
 
-//         highScores()
+
+    initialsForm.addEventListener("submit", function(event) {
+        event.preventDefault()
+        window.localStorage.setItem(initials.value, timeLeft)
+        highScores()
     })
+    
 }
 
-// function highScores() {
-//     h1El.textContent = "Highscores!"
-
-// }
+function highScores() {
+    h1El.textContent = "Highscores!";
+    highscoreList.hidden = false
+    for (i = 0; i < localStorage.length; i++){
+        var key = window.localStorage.key(i);
+        var value = window.localStorage.getItem(localStorage.key(i));
+        var list = document.createElement("p");
+        list.textContent = "User: "+ key + " Score: " + value;
+        highscoreList.appendChild(list)
+    }
+}
